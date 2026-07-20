@@ -4,5 +4,6 @@ export const connection = mysql.createPool({
     host: process.env.MYSQLHOST,
     user: process.env.MYSQLUSER,
     database: process.env.MYSQL_DATABASE,
-    password: process.env.MYSQLPASSWORD
+    password: process.env.MYSQLPASSWORD,
+    charset: 'utf8mb4'
 }).promise();
