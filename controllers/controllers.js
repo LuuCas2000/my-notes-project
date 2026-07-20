@@ -16,6 +16,7 @@ export const getNotesHandler = async (req, res) => {
 
 export const getCurrentNote = async (req, res) => {
    const result = await connection.query('SELECT * FROM mynotes WHERE note_id=?', [req.params.id]);
+   res.setHeader('Content-Type', 'application/json; charset=utf-8')
    res.status(StatusCodes.OK).json({
       msg: 'OK',
       note: result
