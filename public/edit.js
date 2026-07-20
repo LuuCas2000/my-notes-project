@@ -2,6 +2,8 @@ const editForm = document.querySelector('#form_');
 const titleInput = document.querySelector('#title_input');
 const noteInput = document.querySelector('#note_input');
 
+import he from 'he';
+
 
 // GET NOTE'S ID FROM THE QUERY
 const queryString = window.location.search;
@@ -10,16 +12,11 @@ const noteId = urlParams.get('id');
 
 // GET CURRENT NOTE
 const getCurrentNote = async () => {
-    const response = await fetch(`/note/${noteId}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-        }
-    });
+    const response = await fetch(`/note/${noteId}`);
     const result = await response.json();
     
-    titleInput.value = result.note[0][0].title;
-    noteInput.value = result.note[0][0].note;
+    titleInput.value = he.decode(result.note[0][0].title);
+    noteInput.value = he.decode(result.note[0][0].note);
 };
 
 getCurrentNote();
