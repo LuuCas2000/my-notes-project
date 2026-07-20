@@ -2,9 +2,6 @@ const editForm = document.querySelector('#form_');
 const titleInput = document.querySelector('#title_input');
 const noteInput = document.querySelector('#note_input');
 
-import he from 'he';
-
-
 // GET NOTE'S ID FROM THE QUERY
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
