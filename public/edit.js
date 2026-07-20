@@ -10,7 +10,12 @@ const noteId = urlParams.get('id');
 
 // GET CURRENT NOTE
 const getCurrentNote = async () => {
-    const response = await fetch(`/note/${noteId}`);
+    const response = await fetch(`/note/${noteId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+        }
+    });
     const result = await response.json();
     
     titleInput.value = result.note[0][0].title;
